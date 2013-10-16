@@ -4,38 +4,38 @@
 
 int
 main (void) {
-	char *err = NULL;
+  char *err = NULL;
 
-	SPHIA_DB_OPEN(env, db, "./test-db", SPO_CREAT|SPO_RDWR) {
+  SPHIA_DB_OPEN(env, db, "./test-db", SPO_CREAT|SPO_RDWR) {
 
-		assert(env);
-		assert(db);
+    assert(env);
+    assert(db);
 
-	} SPHIA_CATCH(err, env) {
+  } SPHIA_CATCH(err, env) {
 
-		SPHIA_FERROR(err);
+    SPHIA_FERROR(err);
 
-	}
+  }
 
 
-	SPHIA_DESTROY(env) {
+  SPHIA_DESTROY(env) {
 
-		assert(NULL == env);
+    assert(NULL == env);
 
-		SPHIA_DESTROY(db) {
+    SPHIA_DESTROY(db) {
 
-			assert(NULL == db);
+      assert(NULL == db);
 
-		} SPHIA_CATCH(err, db) {
+    } SPHIA_CATCH(err, db) {
 
-			SPHIA_FERROR(err);
+      SPHIA_FERROR(err);
 
-		}
-	} SPHIA_CATCH(err, env) {
+    }
+  } SPHIA_CATCH(err, env) {
 
-		SPHIA_FERROR(err);
+    SPHIA_FERROR(err);
 
-	}
+  }
 
-	return 0;
+  return 0;
 }
