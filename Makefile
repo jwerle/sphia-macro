@@ -1,5 +1,6 @@
 SRC = $(wildcard sophia/db/*.c) test.c
 CFLAGS = -I sophia/db -std=c99 -Wall
+LDFLAGS = -lpthread -lsophia
 
 all: clean test
 
@@ -8,7 +9,7 @@ clean:
 	rm -rf ./test-db
 
 test:
-	$(CC) $(SRC) $(CFLAGS) -o test-sphia-macro
+	$(CC) $(SRC) $(CFLAGS) $(LDFLAGS) -o test-sphia-macro
 	./test-sphia-macro
 
 .PHONY: all clean test
