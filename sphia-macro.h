@@ -1,4 +1,3 @@
-
 //
 // sphia-macro.h
 // copyright (c) 2013 joseph werle <joseph.werle@gmail.com>
@@ -34,5 +33,15 @@
 
 #define SPHIA_DESTROY(o)                                  \
   if (0 == sp_destroy(o))
+
+#define SPHIA_DB_FOREACH(_k, _v, _db)                      \
+  char *_k = NULL, *_v = NULL;                             \
+  void *_c = sp_cursor(_db, SPGT, NULL, 0);                \
+  int _s = 0, _rc = 0;                                     \
+  if (NULL == _c) { _s = 1; (_rc = sp_destroy(_c)); }      \
+  while ((0 == _s && sp_fetch(_c) &&                       \
+        (_k = (char *) sp_key(_c)) &&                      \
+        (_v = (char *) sp_value(_c)))                      \
+        || (_rc = sp_destroy(_c)))  
 
 #endif
