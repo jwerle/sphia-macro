@@ -3,8 +3,8 @@
 // copyright (c) 2013 joseph werle <joseph.werle@gmail.com>
 //
 
-#ifndef __SPHIA_MACRO_H__
-#define __SPHIA_MACRO_H__ 1
+#ifndef SPHIA_MACRO_H
+#define SPHIA_MACRO_H 1
 
 #define SPHIA_MACRO_VERSION "0.0.1"
 
@@ -42,6 +42,6 @@
   while ((0 == _s && sp_fetch(_c) &&                       \
         (_k = (char *) sp_key(_c)) &&                      \
         (_v = (char *) sp_value(_c)))                      \
-        || (_rc = sp_destroy(_c)))  
+        || (_rc = sp_destroy(_c)))
 
 #endif
