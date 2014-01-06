@@ -11,7 +11,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <sophia.h>
+#include <sophia/sophia.h>
 
 #define SPHIA_FERROR(e)                                   \
   fprintf(stderr, "%s\n", e);
